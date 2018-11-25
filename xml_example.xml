@@ -6,26 +6,27 @@
 	<phone>+7(495)333-22-11</phone>
 	<employeesList>
 		<employee>
-			<FirstName>Иван</FirstName>
-			<LastName>Масляков</LastName>
-			<MiddleName>Александрович</MiddleName>
+			<FirstName>РРІР°РЅ</FirstName>
+			<LastName>РњР°СЃР»СЏРєРѕРІ</LastName>
+			<MiddleName>РђР»РµРєСЃР°РЅРґСЂРѕРІРёС‡</MiddleName>
 			<BirthDate>03.12.1988</BirthDate>
 			<Phones>
 				<Phone>+7(968)333-22-11</Phone>
-				<Phone isWorking=”true”>+7(495)333-22-11 ext. 3344</Phone>
+				<Phone isWorking=вЂќtrueвЂќ>+7(495)333-22-11 ext. 3344</Phone>
 			</Phones>
 			<Email>imaslyakov@rencap.com</Email>
 			<Position>HEAD OF FINANCE</Position>
 		</employee>
 		<employee>
-			<FirstName>Роман</FirstName>
-			<LastName>Бегов</LastName>
+			<FirstName>Р РѕРјР°РЅ</FirstName>
+			<LastName>Р‘РµРіРѕРІ</LastName>
 			<BirthDate>08.01.1990</BirthDate>
 			<Phones>
-				<Phone isWorking=”true”>+7(495)333-22-11 ext. 4455</Phone>
+				<Phone isWorking=вЂќtrueвЂќ>+7(495)333-22-11 ext. 4455</Phone>
 			</Phones>
 			<Email>rbegov@rencap.com</Email>
 			<Position>Sales</Position>
 		</employee>		
 	</employeesList>
 </company>
+
