@@ -4,8 +4,8 @@
 	<xs:element name="company" type="СompanyName" />
 	<xs:complexType name="СompanyName">
 		<xs:sequence>
-            <xs:element name="name" type="xs:string" />
-            <xs:element name="address" type="xs:string" />
+            <xs:element name="name" type="xs:string" minOccurs="1" />
+            <xs:element name="address" type="xs:string" minOccurs="1" />
             <xs:element name="postalCode" type="xs:integer"/>
 			<xs:element name="phone">
 				<xs:simpleType>
@@ -19,15 +19,15 @@
 	</xs:complexType>
 	<xs:complexType name="EmployeesListType">
 		<xs:sequence>
-			<xs:element name="employee" type="EmployeeData" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="employee" type="EmployeeData" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>		
 	<xs:complexType name="EmployeeData">
 		<xs:sequence>
-			<xs:element name="FirstName" type="xs:string" />
-			<xs:element name="LastName" type="xs:string" />
+			<xs:element name="FirstName" type="xs:string" minOccurs="1" />
+			<xs:element name="LastName" type="xs:string" minOccurs="1" />
 			<xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
-			<xs:element name="BirthDate">
+			<xs:element name="BirthDate" minOccurs="1">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
 						<xs:pattern value="\d{2}.\d{2}.\d{4}"/>
@@ -35,14 +35,14 @@
 				</xs:simpleType>
 			</xs:element>
 			<xs:element name="Phones" type="PhonesType" />
-			<xs:element name="Email">
+			<xs:element name="Email" minOccurs="1">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
 						<xs:pattern value="[^@]+@[^\.]+\..+"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="Position" type="xs:string" />
+			<xs:element name="Position" type="xs:string" minOccurs="1" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="PhonesType" mixed="true">
