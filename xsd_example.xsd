@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-   <xs:element name="company">
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element name="name" type="xs:string" minOccurs="1" default="name"/>
-            <xs:element name="address" type="xs:string" minOccurs="1" default="address"/>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="company" type="СompanyName" />
+	<xs:complexType name="СompanyName">
+		<xs:sequence>
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="address" type="xs:string" />
             <xs:element name="postalCode" type="xs:integer"/>
-			<xs:element name="PhoneNumber">
-			  <xs:simpleType>
-			    <xs:restriction base="xs:string">
-				<xs:pattern value="[0-9]{1}([0-9]{3})[0-9]{3}-[0-9]{2}-[0-9]{2}"/>
-				</xs:restriction>
-			  </xs:simpleType>
+			<xs:element name="phone">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="\+\d{1}\(\d{3}\)\d{3}-\d{2}-\d{2}"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:element>
-			<xs:element name="employeesList"  minOccurs="1">
-                <xs:complexType>
-                   <xs:sequence>
-				      <xs:element name="employee" maxOccurs="unbounded">
-					      <xs:complexType>
-                              <xs:sequence>
-							     <xs:element name="FirstName" type="xs:string" minOccurs="1" default="FirstName"/>
-								 <xs:element name="LastName" type="xs:string" minOccurs="1" default="LastName"/>
-								 <xs:element name="MiddleName" type="xs:string" default="MiddleName"/>
-								 <xs:element name="BirthDate" type="xs:date" minOccurs="1"/>
-								 <xs:element name="Phones" maxOccurs="3">
-								    <xs:complexType>
-									   <xs:sequence>
-									        <xs:element name="Phone"/>
-											<xs:element name="isWorking" type="xs:boolean" default="false"/>
-									   </xs:sequence>
-									</xs:complexType>
-								 </xs:element>
-								 <xs:element name="Email">
-								    <xs:simpleType>
-								    <xs:restriction base="xs:string"> 
-									<xs:pattern value="[^@]+@[^\.]+\..+"/>
-									</xs:restriction> 
-									</xs:simpleType>
-							     </xs:element>
-								 <xs:element name="Position" type="xs:string" minOccurs="1" default="Position"/>
-							  </xs:sequence>
-					      </xs:complexType>
-				      </xs:element>
-				   </xs:sequence>
-				</xs:complexType>
+			<xs:element name="employeesList" type="EmployeesListType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EmployeesListType">
+		<xs:sequence>
+			<xs:element name="employee" type="EmployeeData" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>		
+	<xs:complexType name="EmployeeData">
+		<xs:sequence>
+			<xs:element name="FirstName" type="xs:string" />
+			<xs:element name="LastName" type="xs:string" />
+			<xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+			<xs:element name="BirthDate">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="\d{2}.\d{2}.\d{4}"/>
+					</xs:restriction>
+				</xs:simpleType>
 			</xs:element>
-         </xs:sequence>
-      </xs:complexType>
-   </xs:element>
+			<xs:element name="Phones" type="PhonesType" />
+			<xs:element name="Email">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="[^@]+@[^\.]+\..+"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Position" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PhonesType" mixed="true">
+		<xs:sequence>
+			<xs:element name="Phone" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="isWorking" type="xs:boolean" />
+	</xs:complexType>	
 </xs:schema>
